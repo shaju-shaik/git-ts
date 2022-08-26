@@ -1,0 +1,9 @@
+apiVersion: v1
+name: git-techstack
+appVersion: 18.04
+description: A simple Ubuntu server with GIT installedin it
+type: application
+version: 0.1.0
+maintainers:
+- name: 
+  email: shaik.shaju@flipkart.com #To be Updated
