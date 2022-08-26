@@ -6,16 +6,22 @@ probe:
 
 image:
   registry: hub.docker.com   ##### TO BE ADDED AFTER UPLOAD
-  repository: shajushaik/git:1  ##### TO BE ADDED AFTER UPLOAD
+  repository: shajushaik/git  ##### TO BE ADDED AFTER UPLOAD
   pullPolicy: IfNotPresent
   tag: "1"
 
-#imagePullSecrets: []
+privaterepo:
+  enabled: false    #-----this has to enable for private repo images-----
+
+imagePullSecrets: {}
+
+
+  
 
 podAnnotations: {}
 
-#podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext: 
+  fsGroup: 2000
 
 
 service:
@@ -44,9 +50,9 @@ readinessProbe:
     port: 
   initialDelaySeconds: 5
 
-#securityContext:
-  # fsGroup: 0
-  #runAsUser: 1000
+securityContext:
+  fsGroup: 0
+  runAsUser: 1000
 
 #autoscaling:
 #  enabled: true
