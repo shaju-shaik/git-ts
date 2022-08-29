@@ -12,37 +12,24 @@ spec:
       labels:
         {{- include "gittechstack.selectorLabels" . | nindent 8 }}
     spec:
-      #{{- with .Values.imagePullSecrets }}
-      #imagePullSecrets:
-        #{{- toYaml . | nindent 8 }}
-      #{{- end }}
-      #securityContext:
-        #{{- toYaml .Values.podSecurityContext . | nindent 8 }}
+
+      {{ if .Values.privaterepo.enabled }} 
+      imagePullSecrets:
+        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext  | nindent 8 }}
+      {{- end }}  
       containers:
-         -name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: 
-              port: http
-            timeoutSeconds: 5
-            periodSeconds: 10
-            initialDelaySeconds: {{ .Values.probe.delayseconds }} 
-          readinessProbe:
-            httpGet:
-              path: 
-              port: http
-            timeoutSeconds: 5
-            periodSeconds: 10
-            initialDelaySeconds: {{ .Values.probe.delayseconds }}
-          resources:
+      - name: {{ .Chart.Name }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+        resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

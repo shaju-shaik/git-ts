@@ -20,6 +20,5 @@
 #Selector labels
 
 {{- define "gittechstack.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "gittechstack.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+name: {{ include "gittechstack.name" . }}
 {{- end }}
