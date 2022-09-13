@@ -49,9 +49,6 @@ securityContext:
   #minReplicas: 1
   #maxReplicas: 2
   #targetCPUUtilizationPercentage: 80
-
 #nodeSelector: {}
-
 #tolerations: []
-
 #affinity: {}
