@@ -5,24 +5,17 @@ probe:
   delayseconds: 10
 
 image:
-  registry: hub.docker.com   ##### TO BE ADDED AFTER UPLOAD
-  repository: shajushaik/git  ##### TO BE ADDED AFTER UPLOAD
+  registry: hub.docker.com   
+  repository: shajushaik/git  
   pullPolicy: IfNotPresent
   tag: "1"
 
-privaterepo:
-  enabled: false    #-----this has to enable for private repo images-----
-
 imagePullSecrets: {}
-
-
-  
 
 podAnnotations: {}
 
 podSecurityContext: 
   fsGroup: 2000
-
 
 service:
   type: ClusterIP
