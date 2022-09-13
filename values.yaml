@@ -14,9 +14,6 @@ imagePullSecrets: {}
 
 podAnnotations: {}
 
-podSecurityContext: 
-  fsGroup: 2000
-
 service:
   type: ClusterIP
   port: 80
@@ -32,14 +29,14 @@ resources:
 # LivenessProbe
 livenessProbe:
   httpGet:
-    path: /  # ------------NEED TO ADD --------------
+    path: /  
     port: 
   initialDelaySeconds: 5
 
 # ReadinessProbe
 readinessProbe:
   httpGet:
-    path: /  #----------NEED TO ADD-----------------
+    path: / 
     port: 
   initialDelaySeconds: 5
 
